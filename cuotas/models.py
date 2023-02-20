@@ -30,6 +30,9 @@ class cuota_social(models.Model):
   monto = models.PositiveSmallIntegerField(default=10)
   est_reg = models.BooleanField(default=True)
 
+  def __str__(self):
+    return self.mes +" - "+ self.año
+
 class cuota_extra(models.Model):
   monto = models.DecimalField(max_digits=5, decimal_places=2)
   nombre = models.CharField(max_length=64, default="Cuota extraordinaria para ")
@@ -38,3 +41,6 @@ class cuota_extra(models.Model):
   fecha_vencimiento = models.DateField(default=date.today)
   mora = models.DecimalField(max_digits=5, decimal_places=2)
   est_reg = models.BooleanField(default=True)
+
+  def __str__(self):
+    return self.nombre
