@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Socio
+from .models import Terreno
 
-admin.site.register(Socio)
+admin.site.register(Terreno)

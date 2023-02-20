@@ -24,4 +24,4 @@ class Socio(AbstractBaseUser, PermissionsMixin):
   objects = CustomSocioManager()
 
   def __str__(self):
-    return self.nombres + self.primer_apellido
+    return self.nombres +" "+ self.primer_apellido
