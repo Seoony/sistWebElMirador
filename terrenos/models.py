@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Terreno(models.Model):
   manzanas=[
-    ('A', 'Mz A'),
+    ('A', 'Mz A, no existe'),
     ('B', 'Mz B'),
     ('G', 'Mz G'),
     ('H', 'Mz H'),
@@ -32,7 +32,7 @@ class Terreno(models.Model):
   otros_usos = models.BooleanField(default=False)
   vivencia = models.BooleanField(default=False)
   observaciones = models.TextField(default="Ninguna")
-
+  disponible = models.BooleanField(default=True)
   est_reg = models.BooleanField(default=True)
 
   def __str__(self):

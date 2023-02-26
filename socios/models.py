@@ -4,6 +4,8 @@ from django.utils import timezone
 from .managers import CustomSocioManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
+from terrenos.models import Terreno
+
 class Socio(AbstractBaseUser, PermissionsMixin):
   dni = models.CharField(max_length=8, unique=True)
   is_staff = models.BooleanField(default=False)
@@ -12,6 +14,9 @@ class Socio(AbstractBaseUser, PermissionsMixin):
   nombres = models.CharField(max_length=63)
   primer_apellido = models.CharField(max_length=31)
   segundo_apellido = models.CharField(max_length=31)
+  terreno = models.ForeignKey(
+     Terreno, on_delete=models.SET_NULL, null=True
+  )
   celular = models.CharField(max_length=9, null=True)
   vivencia = models.BooleanField(default=False)
   inicio_de_vivencia = models.DateField(null=True)
