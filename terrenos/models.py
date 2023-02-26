@@ -1,12 +1,13 @@
 from django.db import models
-from socios.models import Socio
 
 # Create your models here.
 class Terreno(models.Model):
   manzanas=[
+    ('A', 'Mz A'),
+    ('B', 'Mz B'),
     ('G', 'Mz G'),
     ('H', 'Mz H'),
-    ('h', 'Mz H prima'),
+    ('H\'', 'Mz H prima'),
     ('I', 'Mz I'),
     ('J', 'Mz J'),
     ('K', 'Mz K'),
@@ -22,15 +23,11 @@ class Terreno(models.Model):
     ('V', 'Mz V'),
     ('X', 'Mz X'),
   ]
-  def get_default_socio():
-    return Socio.objects.get(dni="12345678")
-  manzana = models.CharField(max_length=1, choices=manzanas)
+  
+  nombre = models.CharField(max_length=4, unique=True)
+  manzana = models.CharField(max_length=2, choices=manzanas)
   lote = models.CharField(max_length=2)
   area = models.DecimalField(max_digits=5, decimal_places=2, null=True)
-  propietario = models.ForeignKey(
-    Socio,
-    default=get_default_socio,
-    on_delete=models.SET_DEFAULT)
   riesgo = models.BooleanField(default=False)
   otros_usos = models.BooleanField(default=False)
   vivencia = models.BooleanField(default=False)

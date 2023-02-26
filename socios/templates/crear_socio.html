@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Crear socio nuevo{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <form action="" method="POST" class="card card-body">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="username">DNI:</label>
+      <input type="text" name="dni" id="username" class="form-control"
+      placeholder="Coloca el DNI" required>
+    </div>
+    <div class="mb-3">
+      <label for="name">Nombres:</label>
+      <input type="text" name="nombres" id="name" class="form-control"
+      placeholder="Coloca el/los nombre(s)" required>
+    </div>
+    <div class="mb-3">
+      <label for="lastname1">Primer Apellido:</label>
+      <input type="text" name="primer_apellido" id="lastname1" class="form-control"
+      placeholder="Coloca el primer Apellido" required>
+    </div>
+    <div class="mb-3">
+      <label for="lastname2">Segundo Apellido:</label>
+      <input type="text" name="segundo_apellido" id="lastname2" class="form-control"
+      placeholder="Coloca el segundo Apellido" required>
+    </div>
+    <div class="mb-3">
+      <label for="birthday">Fecha de Nacimiento:</label>
+      <input type="date" name="fecha_de_nacimiento" id="birthday" class="form-control"
+      value="2000-01-01" required>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+      Registrar
+    </button>
+
+  </form>
+</div>
+
+
+
+{% endblock %}

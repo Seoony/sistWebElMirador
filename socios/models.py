@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from .managers import CustomSocioManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
@@ -19,6 +20,7 @@ class Socio(AbstractBaseUser, PermissionsMixin):
   agua = models.BooleanField(default=False)
   luz = models.BooleanField(default=False)
   caso_social = models.BooleanField(default=False)
+  exonerado = models.BooleanField(default=False)
 
   USERNAME_FIELD = 'dni'
   REQUIRED_FIELDS = ['nombres', 'primer_apellido', 'segundo_apellido', 'fecha_de_nacimiento']
@@ -27,3 +29,6 @@ class Socio(AbstractBaseUser, PermissionsMixin):
 
   def __str__(self):
     return self.nombres +" "+ self.primer_apellido
+
+  def get_absolute_url(self):
+        return reverse("socios:socio-detail", kwargs={"pk": self.id})

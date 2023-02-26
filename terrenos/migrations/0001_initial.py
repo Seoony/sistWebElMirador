@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('vivencia', models.BooleanField(default=False)),
                 ('observaciones', models.TextField(default='Ninguna')),
                 ('est_reg', models.BooleanField(default=True)),
-                ('propietario', models.ForeignKey(default=terrenos.models.Terreno.get_default_socio, on_delete=django.db.models.deletion.SET_DEFAULT, to=settings.AUTH_USER_MODEL)),
+                ('propietario', models.ForeignKey(on_delete=django.db.models.deletion.SET_DEFAULT, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
