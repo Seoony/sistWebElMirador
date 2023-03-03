@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'socios',
     'terrenos',
     'cuotas',
+    'eventos',
 ]
 
 MIDDLEWARE = [

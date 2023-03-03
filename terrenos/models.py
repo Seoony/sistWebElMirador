@@ -27,7 +27,7 @@ class Terreno(models.Model):
   nombre = models.CharField(max_length=4, unique=True)
   manzana = models.CharField(max_length=2, choices=manzanas)
   lote = models.CharField(max_length=2)
-  area = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+  area = models.DecimalField(max_digits=5, decimal_places=2, default=160.00)
   riesgo = models.BooleanField(default=False)
   otros_usos = models.BooleanField(default=False)
   vivencia = models.BooleanField(default=False)

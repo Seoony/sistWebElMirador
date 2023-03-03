@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Registrar Terreno{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-body">
+        {% for terreno in terrenos %}
+        <h6>{{terreno.manzana}} - {{terreno.lote}}</h6>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <form action="" method="POST" class="card card-body">
+        {% csrf_token %}
+        <h1>Registrar Terreno</h1>
+        <div class="mb-3">
+          <h6>{{error}}{{mensaje}}</h6>
+          <label for="manzana">Manzana:</label>
+          <select name="manzana" id="manzana" class="form-select">
+            <option value="">Selecciona una manzana</option>
+            {% for a, b in manzanas %}
+            <option value="{{a}}">{{b}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="lote">Lote:</label>
+          <input type="number" name="lote" id="lote" class="form-control"
+          placeholder="En números" required value="{{lote}}" max="21" min="1">
+        </div>        
+        <div class="d-flex justify-content-between">
+          <button name="boton" value="registrar_y_añadir_otro" class="btn btn-primary" type="submit">
+            Registrar y añadir otro
+          </button>
+          <button name="boton" value="registrar" class="btn btn-primary" type="submit">
+            Registrar
+          </button>
+          <input class="btn btn-danger" type="reset" value="Limpiar">
+        </div>
+        
+    
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

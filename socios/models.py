@@ -15,7 +15,7 @@ class Socio(AbstractBaseUser, PermissionsMixin):
   primer_apellido = models.CharField(max_length=31)
   segundo_apellido = models.CharField(max_length=31)
   terreno = models.ForeignKey(
-     Terreno, on_delete=models.SET_NULL, null=True
+    Terreno, on_delete=models.SET_NULL, null=True
   )
   celular = models.CharField(max_length=9, null=True)
   vivencia = models.BooleanField(default=False)

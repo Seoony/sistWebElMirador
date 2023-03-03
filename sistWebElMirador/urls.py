@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', myHomeView, name='home'),
     path('socios/', include('socios.urls')),
+    path('terrenos/', include('terrenos.urls')),
+    path('cuotas/', include('cuotas.urls')),
 ]

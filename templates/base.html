@@ -20,10 +20,18 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav  ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Terrenos</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'terrenos:registrar_terreno' %}">Terrenos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cuotas
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'cuotas:registrar_cuota_social' %}">Registrar Cuota Social</a></li>
+              <li><a class="dropdown-item" href="{% url 'cuotas:registrar_cuota_extra' %}">Registrar Cuota Extraordinaria</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Iniciar Sesión</a>
@@ -36,11 +44,11 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Socios
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="{% url 'socios:registrar_socio' %}">Registrar</a></li>
+              <li><a class="dropdown-item" href="#">Visualizar</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>

@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import cuota_extra, cuota_social
+from .models import Cuota_extra, Cuota_social, Pago_cuota
 
-admin.site.register(cuota_social)
-admin.site.register(cuota_extra)
+admin.site.register(Cuota_social)
+admin.site.register(Cuota_extra)
+admin.site.register(Pago_cuota)
