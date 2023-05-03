@@ -19,6 +19,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav  ms-auto">
+          
+          {% if user.is_authenticated %}
+          {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/">Admin</a>
+          </li>
+          {% endif %}
+          {% if user.is_staff %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Socios
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'socios:registrar_socio' %}">Registrar</a></li>
+              <li><a class="dropdown-item" href="#">Visualizar</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'terrenos:registrar_terreno' %}">Terrenos</a>
           </li>
@@ -33,26 +52,15 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
+          {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Iniciar Sesión</a>
+            <a class="nav-link" href="{% url 'socios:cerrar_sesion' %}">Cerrar Sesión</a>
           </li>
+          {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Cerrar Sesión</a>
+            <a class="nav-link" href="{% url 'socios:iniciar_sesion' %}">Iniciar Sesión</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/">Admin</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Socios
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'socios:registrar_socio' %}">Registrar</a></li>
-              <li><a class="dropdown-item" href="#">Visualizar</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
           </li>
@@ -62,6 +70,9 @@
     </div>
   </nav>
   <div class="container">
+    <h5>Bienvenido {% if user.is_authenticated %} 
+      {{user.nombres}} {{user.primer_apellido}} {{user.segundo_apellido}},
+    {% endif %} al</h5>
     
     
   
@@ -85,7 +96,7 @@
             <i class="fas fa-gem me-3"></i>El Mirador Zona C
           </h6>
           <p>
-            Somos una Asociación de Vivienda en crecimiento.
+            A por la titulación.
           </p>
         </div>
         <!-- Grid column -->
@@ -135,14 +146,13 @@
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
           <p><i class="fas fa-home me-3"></i> Mz 'I' Lt 11</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
             anthony.rivas.dev@gmail.com
           </p>
           <p><i class="fas fa-phone me-3"></i> + 51 930 274 772</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
         </div>
         <!-- Grid column -->
       </div>

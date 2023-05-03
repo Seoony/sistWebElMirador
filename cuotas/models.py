@@ -60,3 +60,15 @@ class Pago_cuota(models.Model):
   fecha = models.DateField()
   recibo = models.CharField(max_length=10)
   exonerado = models.BooleanField(default=False)
+
+class Ingreso_extra(models.Model):
+  nombre = models.CharField(max_length=120)
+  descripcion = models.TextField()
+  monto = models.PositiveIntegerField()
+  fecha = models.DateField()
+
+class Egreso(models.Model):
+  nombre = models.CharField(max_length=120)
+  descripcion = models.TextField()
+  monto = models.PositiveIntegerField()
+  fecha = models.DateField()

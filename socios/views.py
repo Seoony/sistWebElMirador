@@ -1,10 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from socios.models import Socio
 from terrenos.models import Terreno
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.admin.views.decorators import staff_member_required
 
-
+@staff_member_required
 def registrar_socio(request):
   if request.method == 'GET':
     terrenos = Terreno.objects.all().order_by("nombre").filter(disponible=True)
@@ -64,3 +67,27 @@ def registrar_socio(request):
       else:
         if request.POST['boton']=="registrar":
           return HttpResponseRedirect(reverse('home'))
+
+def iniciar_sesion(request):
+  if request.method == 'GET':
+    if request.user.is_authenticated:
+      return redirect('home')
+    else:
+
+      return render (request, 'iniciar_sesion.html')
+  else:
+    socio = authenticate(
+      request, dni=request.POST['dni'],
+      password=request.POST['contraseña'])
+    if socio is None:
+      return render (request, 'iniciar_sesion.html',
+                     {'error', 'Dni o contraseña incorrectos'})
+    else:
+      login(request, socio)
+      return redirect('home')
+    
+@login_required   
+def cerrar_sesion(request):
+  print(request.user.fecha_de_nacimiento)
+  logout(request)
+  return redirect('home')

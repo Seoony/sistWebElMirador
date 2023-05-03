@@ -2,6 +2,9 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Terreno
 from django.shortcuts import render
+from django.contrib.admin.views.decorators import staff_member_required
+
+@staff_member_required
 def registrar_terreno(request):
   if request.method == 'GET':
     manzanas = Terreno.manzanas

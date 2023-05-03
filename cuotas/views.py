@@ -2,6 +2,9 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Cuota_extra, Cuota_social
 from django.shortcuts import render
+from django.contrib.admin.views.decorators import staff_member_required
+
+@staff_member_required
 def registrar_cuota_social(request):
   if request.method == 'GET':
     meses = Cuota_social.meses
@@ -41,7 +44,8 @@ def registrar_cuota_social(request):
         'años':años,
         'mensaje': "Cuota "+cuota.nombre+" registrado correctamente",
         'cuotas':cuotas_s})
-      
+
+@staff_member_required
 def registrar_cuota_extra(request):
   if request.method == 'GET':
     cuotas_e = Cuota_extra.objects.all()
